@@ -1,8 +1,10 @@
 com/juego/patrones/factory/NinjaFactory.class
+com/juego/patrones/decorator/PersonajeDecorator.class
 com/juego/model/Ninja.class
 com/juego/model/Guerrero.class
 com/juego/patrones/factory/PersonajeFactory.class
 com/juego/model/Personaje.class
 com/juego/patrones/factory/GuerreroFactory.class
 com/juego/App.class
+com/juego/patrones/decorator/EspadaDecorator.class
 com/juego/juego/JuegoLucha.class
