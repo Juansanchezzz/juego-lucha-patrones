@@ -1,0 +1,8 @@
+/workspaces/juego-lucha-patrones/juego-lucha/src/main/java/com/juego/App.java
+/workspaces/juego-lucha-patrones/juego-lucha/src/main/java/com/juego/juego/JuegoLucha.java
+/workspaces/juego-lucha-patrones/juego-lucha/src/main/java/com/juego/model/Guerrero.java
+/workspaces/juego-lucha-patrones/juego-lucha/src/main/java/com/juego/model/Ninja.java
+/workspaces/juego-lucha-patrones/juego-lucha/src/main/java/com/juego/model/Personaje.java
+/workspaces/juego-lucha-patrones/juego-lucha/src/main/java/com/juego/patrones/factory/GuerreroFactory.java
+/workspaces/juego-lucha-patrones/juego-lucha/src/main/java/com/juego/patrones/factory/NinjaFactory.java
+/workspaces/juego-lucha-patrones/juego-lucha/src/main/java/com/juego/patrones/factory/PersonajeFactory.java
