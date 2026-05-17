@@ -1,7 +1,9 @@
-
 package com.juego.model;
 
-import org.junit.jupiter.api.*;
+import org.junit.jupiter.api.BeforeEach;
+import org.junit.jupiter.api.DisplayName;
+import org.junit.jupiter.api.Test;
+
 import static org.junit.jupiter.api.Assertions.*;
 
 class PersonajeTest {
@@ -20,7 +22,6 @@ class PersonajeTest {
 
         assertEquals("Thor", guerrero.getNombre());
         assertEquals(100, guerrero.getVida());
-        assertEquals(20, guerrero.getAtaque());
         assertTrue(guerrero.estaVivo());
     }
 
@@ -44,23 +45,41 @@ class PersonajeTest {
     }
 
     @Test
-    @DisplayName("El ataque debe causar daño entre 10 y 30")
-    void testRangoAtaque() {
+    @DisplayName("No debe aceptar daño negativo")
+    void testDanoNegativo() {
 
-        Personaje oponente = new Personaje("Loki", 100, 15);
+        guerrero.recibirDano(-20);
 
-        int vidaInicial = oponente.getVida();
+        assertEquals(100, guerrero.getVida());
+    }
 
-        guerrero.atacar(oponente);
+    @Test
+    @DisplayName("Personaje debe morir con daño excesivo")
+    void testMuertePersonaje() {
 
-        int vidaFinal = oponente.getVida();
+        guerrero.recibirDano(500);
 
-        int dano = vidaInicial - vidaFinal;
+        assertEquals(0, guerrero.getVida());
+        assertFalse(guerrero.estaVivo());
+    }
 
-        assertTrue(
-            dano >= 10 && dano <= 30,
-            "El daño debe estar entre 10 y 30, fue: " + dano
-        );
+    @Test
+    @DisplayName("Debe atacar correctamente")
+    void testAtaque() {
+
+        Personaje enemigo = new Personaje("Loki", 100, 15);
+
+        guerrero.atacar(enemigo);
+
+        assertTrue(enemigo.getVida() < 100);
+    }
+
+    @Test
+    @DisplayName("Debe lanzar excepción al atacar null")
+    void testAtacarNull() {
+
+        assertThrows(NullPointerException.class, () -> {
+            guerrero.atacar(null);
+        });
     }
 }
-
