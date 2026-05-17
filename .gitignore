@@ -1,0 +1,6 @@
+gitignore id="c3a5pu"
+target/
+*.class
+*.log
+.vscode/
+
