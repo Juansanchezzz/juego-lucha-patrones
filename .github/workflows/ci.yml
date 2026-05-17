@@ -25,23 +25,23 @@ jobs:
           distribution: 'temurin'
 
       - name: Build project
-        run: mvn clean compile
+        run: cd juego-lucha && mvn clean compile
 
       - name: Run tests
-        run: mvn test
+        run: cd juego-lucha && mvn test
 
       - name: Generate JaCoCo report
-        run: mvn jacoco:report
+        run: cd juego-lucha && mvn jacoco:report
 
       - name: Upload coverage report
         uses: actions/upload-artifact@v4
         with:
           name: coverage-report
-          path: target/site/jacoco/
+          path: juego-lucha/target/site/jacoco/
 
       - name: Upload test results
         if: always()
         uses: actions/upload-artifact@v4
         with:
           name: test-results
-          path: target/surefire-reports/
+          path: juego-lucha/target/surefire-reports/
