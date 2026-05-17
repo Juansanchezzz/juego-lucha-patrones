@@ -1,24 +1,51 @@
 package com.juego.juego;
 
 import com.juego.model.Personaje;
-import com.juego.patrones.decorator.EspadaDecorator;
-import com.juego.patrones.factory.GuerreroFactory;
-import com.juego.patrones.factory.PersonajeFactory;
+import com.juego.model.Guerrero;
+import com.juego.model.Ninja;
 
 public class JuegoLucha {
 
     public static void main(String[] args) {
 
-        PersonajeFactory fabrica = new GuerreroFactory();
+        Personaje guerrero = new Guerrero();
+        Personaje ninja = new Ninja();
 
-        Personaje guerrero = fabrica.crearPersonaje();
+        System.out.println("===== INICIO DE LA BATALLA =====");
 
-        System.out.println("=== PERSONAJE BASE ===");
-        guerrero.mostrarPersonaje();
+        while (guerrero.estaVivo() && ninja.estaVivo()) {
 
-        System.out.println("\n=== PERSONAJE CON DECORATOR ===");
+            guerrero.atacar(ninja);
 
-        Personaje guerreroConEspada = new EspadaDecorator(guerrero);
-        guerreroConEspada.mostrarPersonaje();
+            System.out.println(
+                ninja.getNombre() +
+                " tiene " +
+               ninja.getVida() +
+                " HP"
+            );
+
+            if (!ninja.estaVivo()) {
+                break;
+            }
+
+            ninja.atacar(guerrero);
+
+            System.out.println(
+                guerrero.getNombre() +
+                " tiene " +
+                guerrero.getVida() +
+                " HP"
+            );
+
+            System.out.println("----------------------");
+        }
+
+        System.out.println("===== FIN DE LA BATALLA =====");
+
+        if (guerrero.estaVivo()) {
+            System.out.println("Ganó el Guerrero");
+        } else {
+            System.out.println("Ganó el Ninja");
+        }
     }
 }
